@@ -5,7 +5,13 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Model", "FileSharingSystem.Model\FileSharingSystem.Model.csproj", "{CDC6AE83-1F2C-4BE9-B4FA-5891C33C8EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharingSystem.API", "FileSharingSystem.API\FileSharingSystem.API.csproj", "{81F0DB0E-52D6-4C89-8DE3-CF1777887FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.API", "FileSharingSystem.API\FileSharingSystem.API.csproj", "{81F0DB0E-52D6-4C89-8DE3-CF1777887FE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Service", "FileSharingSystem.Service\FileSharingSystem.Service.csproj", "{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Repository", "FileSharingSystem.Repository\FileSharingSystem.Repository.csproj", "{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharingSystem.IOC", "FileSharingSystem.IOC\FileSharingSystem.IOC.csproj", "{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{81F0DB0E-52D6-4C89-8DE3-CF1777887FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F0DB0E-52D6-4C89-8DE3-CF1777887FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F0DB0E-52D6-4C89-8DE3-CF1777887FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
