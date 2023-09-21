@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSharingSystem.Repository.DatabaseContext
+namespace FileSharingSystem.DAL.DatabaseContext
 {
 	public class FileSharingSystemDbContext : DbContext
 	{

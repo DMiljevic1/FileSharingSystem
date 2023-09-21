@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.API", "Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Service", "FileSharingSystem.Service\FileSharingSystem.Service.csproj", "{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Repository", "FileSharingSystem.Repository\FileSharingSystem.Repository.csproj", "{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DAL", "FileSharingSystem.Repository\FileSharingSystem.DAL.csproj", "{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.IOC", "FileSharingSystem.IOC\FileSharingSystem.IOC.csproj", "{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharingSystem.Common", "FileSharingSystem.Common\FileSharingSystem.Common.csproj", "{852A055D-CF19-4953-B64F-3370DC896714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Common", "FileSharingSystem.Common\FileSharingSystem.Common.csproj", "{852A055D-CF19-4953-B64F-3370DC896714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSharingSystem.Contract", "FileSharingSystem.Contract\FileSharingSystem.Contract.csproj", "{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Contract", "FileSharingSystem.Contract\FileSharingSystem.Contract.csproj", "{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
