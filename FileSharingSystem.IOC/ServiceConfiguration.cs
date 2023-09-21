@@ -1,4 +1,6 @@
-﻿using FileSharingSystem.Repository.DatabaseContext;
+﻿using AutoMapper;
+using FileSharingSystem.DAL.DatabaseContext;
+using FileSharingSystem.Service.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,7 @@ namespace FileSharingSystem.IOC
 		public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
 		{
 			ConfigureRepositories(services, configuration);
+			ConfigureApplicationServices(services, configuration);
 		}
 
 		private static void ConfigureRepositories(IServiceCollection services, IConfiguration configuration)
@@ -23,6 +26,15 @@ namespace FileSharingSystem.IOC
 			configuration.GetConnectionString("DefaultConnection")
 			));
 			// dodat ode sve scopove za repositorie
+		}
+
+		private static void ConfigureApplicationServices(IServiceCollection services, IConfiguration configuration)
+		{
+			var mappingConfig = new MapperConfiguration(mc =>
+			{
+				mc.AddProfile(new UserProfile());
+			});
+			services.AddSingleton(mappingConfig.CreateMapper());
 		}
 	}
 }
