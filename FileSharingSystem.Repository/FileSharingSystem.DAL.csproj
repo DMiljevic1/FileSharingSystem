@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FileSharingSystem.Contract\FileSharingSystem.Contract.csproj" />
     <ProjectReference Include="..\FileSharingSystem.Model\FileSharingSystem.Model.csproj" />
   </ItemGroup>
 

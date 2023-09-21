@@ -6,4 +6,15 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FileSharingSystem.Common\FileSharingSystem.Common.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.Contract\FileSharingSystem.Contract.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.Model\FileSharingSystem.Model.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.Repository\FileSharingSystem.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
