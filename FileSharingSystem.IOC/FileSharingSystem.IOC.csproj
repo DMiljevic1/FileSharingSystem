@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileSharingSystem.Repository\FileSharingSystem.DAL.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.DAL\FileSharingSystem.DAL.csproj" />
     <ProjectReference Include="..\FileSharingSystem.Service\FileSharingSystem.Service.csproj" />
   </ItemGroup>
 
