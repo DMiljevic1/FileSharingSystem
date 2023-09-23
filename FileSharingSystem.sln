@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DAL", "Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.IOC", "FileSharingSystem.IOC\FileSharingSystem.IOC.csproj", "{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Common", "FileSharingSystem.Common\FileSharingSystem.Common.csproj", "{852A055D-CF19-4953-B64F-3370DC896714}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DTO", "FileSharingSystem.Common\FileSharingSystem.DTO.csproj", "{852A055D-CF19-4953-B64F-3370DC896714}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Contract", "FileSharingSystem.Contract\FileSharingSystem.Contract.csproj", "{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}"
 EndProject
