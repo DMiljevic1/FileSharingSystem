@@ -1,10 +1,6 @@
 ﻿using FileSharingSystem.Model.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace FileSharingSystem.DAL.DatabaseContext
 {
@@ -18,5 +14,11 @@ namespace FileSharingSystem.DAL.DatabaseContext
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<Model.Models.File> Files { get; set; }
 		public DbSet<UserGroupRelation> UserGroupRelations { get; set; }
-	}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
+        }
+    }
 }
