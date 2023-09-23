@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSharingSystem.Common.DtoModels
+namespace FileSharingSystem.DTO
 {
 	public class UserDTO
 	{
