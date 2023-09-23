@@ -25,7 +25,7 @@ namespace FileSharingSystem.DAL.Configurations
             builder.Property(x => x.Attachment)
                 .IsRequired()
                 .HasColumnName("Attachment")
-                .HasColumnType("varbinary");
+                .HasColumnType("varbinary(max)");
 
             builder.Property(x => x.Extension)
                 .IsRequired()

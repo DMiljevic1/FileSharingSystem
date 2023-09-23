@@ -16,16 +16,16 @@ namespace FileSharingSystem.DAL.Configurations
                 HasMaxLength(64);
 
             builder.Property(x => x.CreatePermission)
-                .HasColumnType("bit")
-                .HasDefaultValue("((1))");
+                .HasColumnType("bit");
+
 
             builder.Property(x => x.UploadPermission)
-                .HasColumnType("bit").
-                HasDefaultValueSql("((1))");
+                .HasColumnType("bit");
+
 
             builder.Property(x => x.DeletePermission)
-                .HasColumnType("bit")
-                .HasDefaultValueSql("((1))");
+                .HasColumnType("bit");
+                
         }
     }
 }
