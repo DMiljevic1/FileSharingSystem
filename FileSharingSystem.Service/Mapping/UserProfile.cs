@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FileSharingSystem.Common.DtoModels;
+using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
 using System;
 using System.Collections.Generic;
