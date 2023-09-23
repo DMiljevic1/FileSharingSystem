@@ -17,5 +17,7 @@ namespace FileSharingSystem.Model.Models
 		public string Email { get; set; }
 		public string PhoneNumber { get; set; }
 		public Gender Gender { get; set; }
+
+		public IList<UserGroupRelation> UserGroupRelations { get; set; }
 	}
 }

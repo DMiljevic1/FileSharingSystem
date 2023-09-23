@@ -12,5 +12,7 @@ namespace FileSharingSystem.Model.Models
 		public string Name { get; set; }
 		public int GroupId { get; set; }
 		public Group? Group { get; set; }
+
+		public ICollection<Model.Models.File> Files { get; set;}
 	}
 }

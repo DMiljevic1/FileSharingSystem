@@ -13,5 +13,9 @@ namespace FileSharingSystem.Model.Models
 		public bool CreatePermission { get; set; }
 		public bool UploadPermission { get; set; }
 		public bool DeletePermission { get; set; }
+
+		public IList<UserGroupRelation> UserGroupRelations { get; set; }
+
+		public ICollection<Folder> Folders { get; set; }
 	}
 }
