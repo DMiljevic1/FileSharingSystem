@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FileSharingSystem.Common\FileSharingSystem.DTO.csproj" />
     <ProjectReference Include="..\FileSharingSystem.Contract\FileSharingSystem.Contract.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.DTO\FileSharingSystem.DTO.csproj" />
     <ProjectReference Include="..\FileSharingSystem.Model\FileSharingSystem.Model.csproj" />
-    <ProjectReference Include="..\FileSharingSystem.Repository\FileSharingSystem.DAL.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.DAL\FileSharingSystem.DAL.csproj" />
   </ItemGroup>
 
 </Project>

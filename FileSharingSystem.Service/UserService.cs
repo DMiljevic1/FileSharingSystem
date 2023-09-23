@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FileSharingSystem.Contract;
-using FileSharingSystem.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
