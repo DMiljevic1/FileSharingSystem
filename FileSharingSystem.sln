@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.API", "Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Service", "FileSharingSystem.Service\FileSharingSystem.Service.csproj", "{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DAL", "FileSharingSystem.Repository\FileSharingSystem.DAL.csproj", "{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.IOC", "FileSharingSystem.IOC\FileSharingSystem.IOC.csproj", "{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DTO", "FileSharingSystem.Common\FileSharingSystem.DTO.csproj", "{852A055D-CF19-4953-B64F-3370DC896714}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.Contract", "FileSharingSystem.Contract\FileSharingSystem.Contract.csproj", "{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DAL", "FileSharingSystem.DAL\FileSharingSystem.DAL.csproj", "{87B47C99-F68F-4938-B380-8BF4FB4A322D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSharingSystem.DTO", "FileSharingSystem.DTO\FileSharingSystem.DTO.csproj", "{5E7BC3CA-0451-4C17-9370-A19B8748C4E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,22 +35,22 @@ Global
 		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F5425BC-3BFD-4876-9111-1ADBFC2FF634}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D10AAAD-0573-4347-86F9-F5BDDA7A274B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4E3554-F30A-41A3-9D90-3DFADE3B4EA5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{852A055D-CF19-4953-B64F-3370DC896714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{852A055D-CF19-4953-B64F-3370DC896714}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{852A055D-CF19-4953-B64F-3370DC896714}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{852A055D-CF19-4953-B64F-3370DC896714}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F13C7E0A-DD3D-4EF7-B1BA-53BF5B8FC43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B47C99-F68F-4938-B380-8BF4FB4A322D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B47C99-F68F-4938-B380-8BF4FB4A322D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B47C99-F68F-4938-B380-8BF4FB4A322D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B47C99-F68F-4938-B380-8BF4FB4A322D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7BC3CA-0451-4C17-9370-A19B8748C4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7BC3CA-0451-4C17-9370-A19B8748C4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7BC3CA-0451-4C17-9370-A19B8748C4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7BC3CA-0451-4C17-9370-A19B8748C4E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
