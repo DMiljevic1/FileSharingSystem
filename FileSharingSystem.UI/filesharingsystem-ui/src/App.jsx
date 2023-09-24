@@ -3,13 +3,15 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Home from'./Pages/Home'
+import { Login } from './Pages/Login' 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Home/>
+      <div className="App">
+       <Home/>
+      </div>
     </>
   )
 }
