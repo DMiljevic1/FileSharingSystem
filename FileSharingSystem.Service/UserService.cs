@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
 using FileSharingSystem.Contract;
+using FileSharingSystem.DTO;
+using FileSharingSystem.Model.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +20,11 @@ namespace FileSharingSystem.Service
 			_userRepository = userRepository;
 			_mapper = mapper;
 		}
-	}
+
+        public async Task<UserDTO> GetUserById(int userId, CancellationToken cancellationToken)
+        {
+            var user = await _userRepository.GetUserById(userId, cancellationToken);
+			return _mapper.Map<User,UserDTO>(user);
+        }
+    }
 }
