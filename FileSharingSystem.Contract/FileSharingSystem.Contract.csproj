@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FileSharingSystem.DTO\FileSharingSystem.DTO.csproj" />
+    <ProjectReference Include="..\FileSharingSystem.Model\FileSharingSystem.Model.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,6 +2,14 @@ using FileSharingSystem.IOC;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options => {
+	options.AddPolicy("AllowLocalhost",
+		policy =>
+		{
+			policy.WithOrigins("http://localhost:5173");
+		});
+});
+
 builder.Services.ConfigureServices(builder.Configuration);
 
 builder.Services.AddControllers();
@@ -16,6 +24,8 @@ if (app.Environment.IsDevelopment())
 	app.UseSwagger();
 	app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 

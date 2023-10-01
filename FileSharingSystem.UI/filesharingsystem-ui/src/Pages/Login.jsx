@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "../../styles/login.css"
+import "../../styles/styles.css"
 
 export const Login = (props) => {
     const [username, setusername] = useState('');
@@ -17,9 +17,9 @@ export const Login = (props) => {
             <input value={username} onChange={(e) => setusername(e.target.value)}type="username" placeholder="username" id="username" name="username" />
             <label htmlFor="password">password</label>
             <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="password" id="password" name="password" />
-            <button type="submit">Log In</button>
+            <button className="login-button" type="submit">Log In</button>
         </form>
-        <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+        <button className="link-btn login-button" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
     </div>
     )
 }

@@ -1,10 +1,8 @@
 ﻿using FileSharingSystem.Contract;
 using FileSharingSystem.DAL.DatabaseContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FileSharingSystem.Model.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace FileSharingSystem.DAL.Repository
 {
@@ -15,5 +13,11 @@ namespace FileSharingSystem.DAL.Repository
 		{
 			_dbContext = dbContext;
 		}
-	}
+
+        public async Task<User> GetUserById(int userId, CancellationToken cancellationToken)
+        {
+			return await _dbContext.Users.FirstOrDefaultAsync<User>(u => u.Id == userId, cancellationToken);
+		
+        }
+    }
 }
