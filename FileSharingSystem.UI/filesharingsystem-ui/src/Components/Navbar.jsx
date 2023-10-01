@@ -1,13 +1,14 @@
-import "../../styles/navbar.css"
+import "../../styles/styles.css"
+
 function Navbar() {
 
     return (
-        <div class="navbar-container">
-            <div class="navbar-item">FILE SHARING SYSTEM</div>
-            <div class="navbar-item">GROUPS</div>
-            <div class="navbar-item">MY GROUPS</div>
-            <div class="navbar-item">NOTIFICATIONS</div>
-            <div class="navbar-item">MY ACCOUNT</div>
+        <div className="navbar-container">
+            <div>FILE SHARING SYSTEM</div>
+            <div>GROUPS</div>
+            <div>MY GROUPS</div>
+            <div>NOTIFICATIONS</div>
+            <div>MY ACCOUNT</div>
         </div>
     )
 }

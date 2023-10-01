@@ -1,10 +1,13 @@
-import "../../styles/profile.css"
+import "../../styles/styles.css"
 function ProfileImage() {
+    
     return (
         <>
-        <div>
-
+        <div className="profile-container">
+            <img></img>
         </div>
         </>
     )
 }
+
+export default ProfileImage
