@@ -2,6 +2,7 @@
 using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace FileSharingSystem.API.Controllers
 			_authService = authService;
 		}
 
+		[EnableCors("AllowLocalhost")]
 		[HttpPost]
 		[AllowAnonymous]
 		public async Task<IActionResult> Login([FromBody] UserLogin userLogin, CancellationToken cancellationToken)
