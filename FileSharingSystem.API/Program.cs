@@ -6,7 +6,8 @@ builder.Services.AddCors(options => {
 	options.AddPolicy("AllowLocalhost",
 		policy =>
 		{
-			policy.WithOrigins("http://localhost:5173");
+			policy.WithOrigins("*")
+			.WithMethods("GET", "POST", "DELETE", "PUT", "OPTIONS").AllowAnyHeader();
 		});
 });
 

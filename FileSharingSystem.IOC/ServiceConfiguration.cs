@@ -4,9 +4,11 @@ using FileSharingSystem.DAL.DatabaseContext;
 using FileSharingSystem.DAL.Repository;
 using FileSharingSystem.Service;
 using FileSharingSystem.Service.Mapping;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +23,31 @@ namespace FileSharingSystem.IOC
 		{
 			ConfigureRepositories(services, configuration);
 			ConfigureApplicationServices(services, configuration);
+			ConfigureAuthentication(services, configuration);
+		}
+
+		private static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
+		{
+			services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+			}).AddJwtBearer(o =>
+			{
+				o.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidIssuer = configuration["Jwt:Issuer"],
+					ValidAudience = configuration["Jwt:Audience"],
+					IssuerSigningKey = new SymmetricSecurityKey
+					(Encoding.UTF8.GetBytes(configuration["Jwt:Key"])),
+					ValidateIssuer = true,
+					ValidateAudience = true,
+					ValidateLifetime = true,
+					ValidateIssuerSigningKey = true
+				};
+			});
+			services.AddAuthorization();
 		}
 
 		private static void ConfigureRepositories(IServiceCollection services, IConfiguration configuration)
@@ -29,6 +56,7 @@ namespace FileSharingSystem.IOC
 			configuration.GetConnectionString("DefaultConnection")
 			));
 			services.AddScoped<IUserRepository, UserRepository>();
+			services.AddScoped<IAuthRepository, AuthRepository>();
 		}
 
 		private static void ConfigureApplicationServices(IServiceCollection services, IConfiguration configuration)
@@ -40,6 +68,7 @@ namespace FileSharingSystem.IOC
 			services.AddSingleton(mappingConfig.CreateMapper());
 
 			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<IAuthService, AuthService>();
 		}
 	}
 }
