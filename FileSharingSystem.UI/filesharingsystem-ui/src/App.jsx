@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { AppProvider } from './context/AppContext'
 
 library.add(fas)
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <AppProvider>
       <div className="App">
         <Router>
           <Routes>
@@ -24,6 +26,7 @@ function App() {
           </Routes>
         </Router>
       </div>
+      </AppProvider>
     </>
   )
 }

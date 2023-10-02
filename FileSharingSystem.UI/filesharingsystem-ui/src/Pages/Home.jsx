@@ -2,26 +2,18 @@ import Navbar from "../Components/Navbar";
 import ProfileImage from "../Components/ProfileImage";
 import Customtextbox from "../Components/Customtextbox";
 import CustomTable from "../Components/CustomTable";
-import { useEffect, useState } from "react";
-import Axios from "axios";
+import { AppContext } from "../context/Appcontext"
+import { useContext } from "react";
 
 function Home() {
 
-    const [firstName, setFirstName ] = useState("");
-    const [lastName, setLastName ] = useState("");
+    const {
+        services: {
+            homepageService
+        }
+    } = useContext(AppContext)
 
-    const fetchNames = () => {
-        Axios.get("https://localhost:7177/api/User?userId=1").then((res) => {
-            setFirstName(res.data.firstName);
-            setLastName(res.data.lastName);
-        })
-    }
-
-    useEffect(() => {
-        fetchNames();
-    }, []);
-    
-
+    var res = homepageService.getUserInfo({id:1});
 
     return (
         <div>
@@ -29,8 +21,8 @@ function Home() {
             <div className="home-container">
                 <div>
                     <ProfileImage/>
-                    <Customtextbox customMessage="Ime: " className="text-box1" name={firstName}/>
-                    <Customtextbox customMessage="Prezime: " className="text-box2" name={lastName}/>
+                    <Customtextbox customMessage="Ime: " className="text-box1" name={res[0]}/>
+                    <Customtextbox customMessage="Prezime: " className="text-box2" name={res[1]}/>
                 </div>
                 <CustomTable/>
             </div>
