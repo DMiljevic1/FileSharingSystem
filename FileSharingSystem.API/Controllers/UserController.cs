@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FileSharingSystem.API.Controllers
 {
+	
 	[Route("api/[controller]")]
 	[ApiController]
 	public class UserController : ControllerBase
@@ -18,7 +19,7 @@ namespace FileSharingSystem.API.Controllers
 		{
 			_userService = userService;
 		}
-        [EnableCors("AllowLocalhost")]
+		[EnableCors("AllowLocalhost")]
         [HttpGet]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetUserById(int userId, CancellationToken cancellationToken) 

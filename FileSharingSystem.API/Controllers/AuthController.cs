@@ -18,10 +18,10 @@ namespace FileSharingSystem.API.Controllers
 			_authService = authService;
 		}
 
-		[EnableCors("AllowLocalhost")]
-		[HttpPost]
+        [EnableCors("AllowLocalhost")]
+        [HttpPost]
 		[AllowAnonymous]
-		public async Task<IActionResult> Login([FromBody] UserLogin userLogin, CancellationToken cancellationToken)
+        public async Task<IActionResult> Login([FromBody] UserLogin userLogin, CancellationToken cancellationToken)
 		{
 			var loginResponse = await _authService.Generate(userLogin, cancellationToken);
 			if (loginResponse.Success)

@@ -21,7 +21,7 @@ export const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username);
-        const response = axios.get('https://localhost:7177/api/Auth',
+        const response = axios.post('https://localhost:7177/api/Auth',
     {
         username: username,
         password: pass
