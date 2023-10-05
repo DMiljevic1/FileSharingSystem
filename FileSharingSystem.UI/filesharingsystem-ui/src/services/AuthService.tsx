@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+ 
 export default async function Login(username:FormDataEntryValue | null, password: FormDataEntryValue | null) {
     
   try {
@@ -11,7 +11,7 @@ export default async function Login(username:FormDataEntryValue | null, password
   {
     headers: {'Content-Type': 'application/json'}
   });
-  console.log(JSON.stringify(response.data));
+  localStorage.setItem('token', response.data.token);
   } catch (error) {
     console.log(error);
   }
