@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Login from "../services/AuthService";
+import "../styles/signIn.css"
 
 function Copyright(props: any) {
   return (
@@ -42,7 +43,7 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs"  sx={{mt: 0, mb: 0, mr: "auto", ml: "auto" }}>
         <CssBaseline />
         <Box
           sx={{
