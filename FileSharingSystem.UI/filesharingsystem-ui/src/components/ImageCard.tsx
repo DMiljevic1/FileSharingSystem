@@ -5,6 +5,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import FlyingButton from './FlyingButton'; 
 import { Avatar, Typography } from '@mui/material';
+import LoadUserInfo, { GetUserResponse } from "../services/GroupUserService";
+import { User } from "../services/GroupUserService"
+ 
+const data = await LoadUserInfo(1) as User;
 
 
 
@@ -20,10 +24,10 @@ const card = (
       </label>
       
       <Box sx={{display: "flex", flexDirection: "row"}}>
-        <Typography variant='h6' gutterBottom padding="5px">First Name</Typography>
-        <Typography variant='h6' gutterBottom padding="5px">Last Name</Typography>
+        <Typography variant='h6' gutterBottom padding="5px">{data.firstName}</Typography>
+        <Typography variant='h6' gutterBottom padding="5px">{data.lastName}</Typography>
       </Box>
-      <Typography variant='h6' gutterBottom>Email</Typography>
+      <Typography variant='h6' gutterBottom>{data.email}</Typography>
     </CardActions>
   </React.Fragment>
 );
