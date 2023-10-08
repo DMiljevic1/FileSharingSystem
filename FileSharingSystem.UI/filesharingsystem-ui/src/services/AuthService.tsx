@@ -1,11 +1,11 @@
 import axios from 'axios';
  
-export default async function Login(username:FormDataEntryValue | null, password: FormDataEntryValue | null) {
+export default async function Login(email:FormDataEntryValue | null, password: FormDataEntryValue | null) {
     
   try {
     const response = await axios.post('https://localhost:7177/api/Auth', JSON.stringify(
     {
-      username, password
+      email, password
     }
   ),
   {

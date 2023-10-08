@@ -13,19 +13,7 @@ namespace FileSharingSystem.DAL.Configurations
 
             builder.Property(x => x.Name)
                 .IsRequired().
-                HasMaxLength(64);
-
-            builder.Property(x => x.CreatePermission)
-                .HasColumnType("bit");
-
-
-            builder.Property(x => x.UploadPermission)
-                .HasColumnType("bit");
-
-
-            builder.Property(x => x.DeletePermission)
-                .HasColumnType("bit");
-                
+                HasMaxLength(64);   
         }
     }
 }

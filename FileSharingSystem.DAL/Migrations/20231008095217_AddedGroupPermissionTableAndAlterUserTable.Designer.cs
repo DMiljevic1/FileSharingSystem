@@ -4,6 +4,7 @@ using FileSharingSystem.DAL.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FileSharingSystem.DAL.Migrations
 {
     [DbContext(typeof(FileSharingSystemDbContext))]
-    partial class FileSharingSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231008095217_AddedGroupPermissionTableAndAlterUserTable")]
+    partial class AddedGroupPermissionTableAndAlterUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
