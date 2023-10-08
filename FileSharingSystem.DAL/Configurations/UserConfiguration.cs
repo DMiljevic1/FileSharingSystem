@@ -12,11 +12,11 @@ namespace FileSharingSystem.DAL.Configurations
             builder.Property(x => x.Id)
                 .ValueGeneratedOnAdd();
 
-            builder.Property(x => x.Username)
-                .IsRequired()
-                .HasMaxLength(50);
+			builder.Property(x => x.Email)
+			   .IsRequired()
+			   .HasMaxLength(100);
 
-            builder.Property(x => x.Password)
+			builder.Property(x => x.Password)
                 .IsRequired()
                 .HasMaxLength(300);
 
@@ -28,13 +28,11 @@ namespace FileSharingSystem.DAL.Configurations
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.Property(x => x.Email)
-                .IsRequired()
-                .HasMaxLength(100);
+            builder.Property(x => x.DateOfBirth)
+                .IsRequired();
 
-            builder.Property(x => x.PhoneNumber)
-                .IsRequired()
-                .HasMaxLength(20);
+            builder.Property(x => x.Gender)
+                .IsRequired();
         }
     }
 }

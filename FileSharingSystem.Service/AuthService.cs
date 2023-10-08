@@ -27,7 +27,7 @@ namespace FileSharingSystem.Service
 		}
 		public async Task<User> Authenticate(UserLogin userLogin, CancellationToken cancellationToken)
 		{
-			return await _authRepository.GetUserByUsernameAndPassword(userLogin.Username, HashUserPassword(userLogin.Password), cancellationToken);
+			return await _authRepository.GetUserByEmailAndPassword(userLogin.Email, HashUserPassword(userLogin.Password), cancellationToken);
 		}
 		private string HashUserPassword(string plainTextPassword)
 		{
@@ -63,7 +63,7 @@ namespace FileSharingSystem.Service
 				var claims = new[]
 				{
 					new Claim(ClaimTypes.Rsa, user.Id.ToString()),
-					new Claim(ClaimTypes.NameIdentifier, user.Username)
+					new Claim(ClaimTypes.NameIdentifier, user.Email)
 				};
 				var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Audience"],
 					claims,

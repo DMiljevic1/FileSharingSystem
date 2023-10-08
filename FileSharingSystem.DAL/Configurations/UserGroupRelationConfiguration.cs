@@ -18,7 +18,8 @@ namespace FileSharingSystem.DAL.Configurations
                 .WithMany(g => g.UserGroupRelations)
                 .HasForeignKey(g => g.GroupId);
 
-            
+            builder.Property(ug => ug.RequestStatus)
+                .IsRequired();
         }
     }
 }

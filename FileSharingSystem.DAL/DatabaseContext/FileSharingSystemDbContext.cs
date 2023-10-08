@@ -14,6 +14,7 @@ namespace FileSharingSystem.DAL.DatabaseContext
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<Model.Models.File> Files { get; set; }
 		public DbSet<UserGroupRelation> UserGroupRelations { get; set; }
+        public DbSet<GroupPermission> GroupPermissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

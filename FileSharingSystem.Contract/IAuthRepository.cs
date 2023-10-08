@@ -9,6 +9,6 @@ namespace FileSharingSystem.Contract
 {
 	public interface IAuthRepository
 	{
-		Task<User> GetUserByUsernameAndPassword(string username, string password, CancellationToken cancellationToken);
+		Task<User> GetUserByEmailAndPassword(string email, string password, CancellationToken cancellationToken);
 	}
 }
