@@ -20,36 +20,16 @@ namespace FileSharingSystem.Service
 	{
 		private readonly IAuthRepository _authRepository;
 		private readonly IConfiguration _config;
-		public AuthService (IAuthRepository authRepository, IConfiguration config)
+		private readonly IHashService _hashService;
+		public AuthService (IAuthRepository authRepository, IConfiguration config, IHashService hashService)
 		{
 			_authRepository = authRepository;
 			_config = config;
+			_hashService = hashService;
 		}
 		public async Task<User> Authenticate(UserLogin userLogin, CancellationToken cancellationToken)
 		{
-			return await _authRepository.GetUserByEmailAndPassword(userLogin.Email, HashUserPassword(userLogin.Password), cancellationToken);
-		}
-		private string HashUserPassword(string plainTextPassword)
-		{
-			string hashedPassword;
-			using (SHA256 sha256Hash = SHA256.Create())
-			{
-				hashedPassword = GetHash(sha256Hash, plainTextPassword);
-			}
-			return hashedPassword;
-		}
-		private static string GetHash(HashAlgorithm hashAlgorithm, string input)
-		{
-			byte[] data = hashAlgorithm.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-			StringBuilder? sBuilder = new StringBuilder();
-
-			for (int i = 0; i < data.Length; i++)
-			{
-				sBuilder.Append(data[i].ToString("x2"));
-			}
-
-			return sBuilder.ToString();
+			return await _authRepository.GetUserByEmailAndPassword(userLogin.Email, _hashService.HashUserPassword(userLogin.Password), cancellationToken);
 		}
 
 		public async Task<LoginResponse> Generate(UserLogin userLogin, CancellationToken cancellationToken)

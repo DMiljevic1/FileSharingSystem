@@ -69,6 +69,7 @@ namespace FileSharingSystem.IOC
 
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IAuthService, AuthService>();
+			services.AddScoped<IHashService, HashService>();
 		}
 	}
 }

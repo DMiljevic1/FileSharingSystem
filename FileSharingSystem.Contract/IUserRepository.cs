@@ -10,5 +10,6 @@ namespace FileSharingSystem.Contract
 	public interface IUserRepository
 	{
 		Task<User> GetUserById(int userId, CancellationToken cancellationToken);
+		Task AddUser(User user, CancellationToken cancellationToken);
 	}
 }
