@@ -8,11 +8,6 @@ export type User = {
     phone_number: string;
 }
 
-export type GetUserResponse = {
-    data: User;
-}
-
-
 export default async function LoadUserInfo(userId : number | null ){
 
     try{

@@ -5,10 +5,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import FlyingButton from './FlyingButton'; 
 import { Avatar, Typography } from '@mui/material';
-import LoadUserInfo, { GetUserResponse } from "../services/GroupUserService";
+import GetUserGroupRelation from "../services/GroupUserService";
 import { User } from "../services/GroupUserService"
  
-const data = await LoadUserInfo(1) as User;
+const data = await GetUserGroupRelation(1) as User;
 
 
 
