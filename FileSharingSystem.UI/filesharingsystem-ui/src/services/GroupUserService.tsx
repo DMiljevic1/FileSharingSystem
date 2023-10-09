@@ -8,7 +8,7 @@ export type User = {
     phone_number: string;
 }
 
-export default async function LoadUserInfo(userId : number | null ){
+export default async function GetUserGroupRelation(userId : number | null ){
 
     try{
         const { data, status } = await axios.get<User>(
