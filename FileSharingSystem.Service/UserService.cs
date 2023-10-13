@@ -15,16 +15,25 @@ namespace FileSharingSystem.Service
 	{
 		private readonly IUserRepository _userRepository;
 		private readonly IMapper _mapper;
-		public UserService(IUserRepository userRepository, IMapper mapper)
+		private readonly IHashService _hashService;
+		public UserService(IUserRepository userRepository, IMapper mapper, IHashService hashService)
 		{
 			_userRepository = userRepository;
 			_mapper = mapper;
+			_hashService = hashService;
 		}
 
-        public async Task<UserDTO> GetUserById(int userId, CancellationToken cancellationToken)
+        public async Task<UserDto> GetUserById(int userId, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserById(userId, cancellationToken);
-			return _mapper.Map<User,UserDTO>(user);
+			return _mapper.Map<User,UserDto>(user);
         }
+
+		public async Task AddUser(UserDto userDto, CancellationToken cancellationToken)
+		{
+			userDto.Password = _hashService.HashUserPassword(userDto.Password);
+			var user = _mapper.Map<UserDto, User>(userDto);
+			await _userRepository.AddUser(user, cancellationToken);
+		}
     }
 }

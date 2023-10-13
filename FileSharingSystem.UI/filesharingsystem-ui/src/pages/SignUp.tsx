@@ -20,6 +20,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
+import RegisterUser from "../services/UserService";
+import {useState} from 'react';
 
 function Copyright(props: any) {
   return (
@@ -45,10 +47,7 @@ export default function SignUp() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    RegisterUser(data.get('email'), data.get('password'), data.get('firstName'), data.get('lastName'), data.get('dateOfBirth'));
   };
 
   return (
@@ -133,12 +132,12 @@ export default function SignUp() {
                   name="dateOfBirth"
                   label="Date of birth"
                   id="dateOfBirth"
-                  format="DD/MM/YYYY"
+                  format="DD-MM-YYYY"
                 />
                  </DemoContainer>
                 </LocalizationProvider>
               </Grid>
-              <Grid item xs={12}>
+             {/*  <Grid item xs={12}>
                 <FormControl fullWidth required>
                   <InputLabel id="genderInputLabel" required>Gender</InputLabel>
                   <Select
@@ -148,11 +147,11 @@ export default function SignUp() {
                     id="gender"
                     label="Gender">
                     <MenuItem value={0}>Male</MenuItem>
-                    <MenuItem value={20}>Female</MenuItem>
-                    <MenuItem value={30}>Other</MenuItem>
+                    <MenuItem value={1}>Female</MenuItem>
+                    <MenuItem value={2}>Other</MenuItem>
                   </Select>
                </FormControl>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
