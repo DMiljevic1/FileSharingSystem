@@ -5,10 +5,12 @@ using FileSharingSystem.DAL.Repository;
 using FileSharingSystem.Service;
 using FileSharingSystem.Service.Mapping;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,11 @@ namespace FileSharingSystem.IOC
 			ConfigureApplicationServices(services, configuration);
 			ConfigureAuthentication(services, configuration);
 		}
+		public static void ConfigureLogging(this IServiceCollection services, WebApplicationBuilder builder)
+		{
+			builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+		}
+
 
 		private static void ConfigureAuthentication(IServiceCollection services, IConfiguration configuration)
 		{

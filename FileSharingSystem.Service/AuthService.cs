@@ -13,6 +13,7 @@ using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Logging;
 
 namespace FileSharingSystem.Service
 {
@@ -21,11 +22,13 @@ namespace FileSharingSystem.Service
 		private readonly IAuthRepository _authRepository;
 		private readonly IConfiguration _config;
 		private readonly IHashService _hashService;
-		public AuthService (IAuthRepository authRepository, IConfiguration config, IHashService hashService)
+		private readonly ILogger<AuthService> _logger;
+		public AuthService (IAuthRepository authRepository, IConfiguration config, IHashService hashService, ILogger<AuthService> logger)
 		{
 			_authRepository = authRepository;
 			_config = config;
 			_hashService = hashService;
+			_logger = logger;
 		}
 		public async Task<User> Authenticate(UserLogin userLogin, CancellationToken cancellationToken)
 		{
@@ -52,11 +55,13 @@ namespace FileSharingSystem.Service
 				loginResponse.Success = true;
 				loginResponse.Message = "User found.";
 				loginResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
+				_logger.LogDebug("Login passed. Message: {0}, Email: {1}, Password: {2}", loginResponse.Message, userLogin.Email, _hashService.HashUserPassword(userLogin.Password));
 			}
 			else
 			{
 				loginResponse.Success = false;
 				loginResponse.Message = "User not found.";
+				_logger.LogError("Login failed. Message: {0}, Email: {1}, Password: {2}", loginResponse.Message, userLogin.Email, _hashService.HashUserPassword(userLogin.Password));
 			}
 			return loginResponse;
 		}

@@ -12,6 +12,7 @@ builder.Services.AddCors(options => {
 });
 
 builder.Services.ConfigureServices(builder.Configuration);
+builder.Services.ConfigureLogging(builder);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
