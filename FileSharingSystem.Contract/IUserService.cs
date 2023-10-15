@@ -11,7 +11,7 @@ namespace FileSharingSystem.Contract
 	public interface IUserService
 	{
         Task<UserDto> GetUserById(int userId, CancellationToken cancellationToken);
-		Task AddUser(UserDto userDto, CancellationToken cancellationToken);
+		Task<AddUserResponse> AddUser(UserDto userDto, CancellationToken cancellationToken);
 
 	}
 }

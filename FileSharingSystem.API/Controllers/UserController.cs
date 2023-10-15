@@ -41,8 +41,7 @@ namespace FileSharingSystem.API.Controllers
 		{
 			if (userDto != null)
 			{
-				await _userService.AddUser(userDto, cancellationToken);
-				return Ok();
+				return Ok(await _userService.AddUser(userDto, cancellationToken));
 			}
 			return BadRequest();
 		}
