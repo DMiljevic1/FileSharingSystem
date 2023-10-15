@@ -2,8 +2,11 @@
 using FileSharingSystem.Contract;
 using FileSharingSystem.DAL.DatabaseContext;
 using FileSharingSystem.DAL.Repository;
+using FileSharingSystem.DTO;
 using FileSharingSystem.Service;
 using FileSharingSystem.Service.Mapping;
+using FileSharingSystem.Service.Validation;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +29,7 @@ namespace FileSharingSystem.IOC
 			ConfigureRepositories(services, configuration);
 			ConfigureApplicationServices(services, configuration);
 			ConfigureAuthentication(services, configuration);
+			ConfigureFluentValidation(services, configuration);
 		}
 		public static void ConfigureLogging(this IServiceCollection services, WebApplicationBuilder builder)
 		{
@@ -77,6 +81,11 @@ namespace FileSharingSystem.IOC
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IAuthService, AuthService>();
 			services.AddScoped<IHashService, HashService>();
+		}
+
+		private static void ConfigureFluentValidation(IServiceCollection services, IConfiguration configuration)
+		{
+			services.AddScoped<IValidator<UserDto>, UserValidator>();
 		}
 	}
 }

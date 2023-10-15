@@ -2,6 +2,7 @@
 using FileSharingSystem.Contract;
 using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,13 @@ namespace FileSharingSystem.Service
 		private readonly IUserRepository _userRepository;
 		private readonly IMapper _mapper;
 		private readonly IHashService _hashService;
-		public UserService(IUserRepository userRepository, IMapper mapper, IHashService hashService)
+		private readonly IValidator<UserDto> _validator;
+		public UserService(IUserRepository userRepository, IMapper mapper, IHashService hashService, IValidator<UserDto> validator)
 		{
 			_userRepository = userRepository;
 			_mapper = mapper;
 			_hashService = hashService;
+			_validator = validator;
 		}
 
         public async Task<UserDto> GetUserById(int userId, CancellationToken cancellationToken)
@@ -31,9 +34,13 @@ namespace FileSharingSystem.Service
 
 		public async Task AddUser(UserDto userDto, CancellationToken cancellationToken)
 		{
-			userDto.Password = _hashService.HashUserPassword(userDto.Password);
-			var user = _mapper.Map<UserDto, User>(userDto);
-			await _userRepository.AddUser(user, cancellationToken);
+			var validationResult = await _validator.ValidateAsync(userDto, cancellationToken);
+			if(validationResult.IsValid)
+			{
+				userDto.Password = _hashService.HashUserPassword(userDto.Password);
+				var user = _mapper.Map<UserDto, User>(userDto);
+				await _userRepository.AddUser(user, cancellationToken);
+			}
 		}
     }
 }
