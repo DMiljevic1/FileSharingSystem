@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FileSharingSystem.Service.Validation
 {
-	public class UserValidator : AbstractValidator<UserDto>
+	public class UserValidator : AbstractValidator<AddUserRequest>
 	{
 		public UserValidator() 
 		{

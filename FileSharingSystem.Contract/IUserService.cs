@@ -10,8 +10,8 @@ namespace FileSharingSystem.Contract
 {
 	public interface IUserService
 	{
-        Task<UserDto> GetUserById(int userId, CancellationToken cancellationToken);
-		Task<AddUserResponse> AddUser(UserDto userDto, CancellationToken cancellationToken);
+        Task<AddUserRequest> GetUserById(int userId, CancellationToken cancellationToken);
+		Task<AddUserResponse> AddUser(AddUserRequest userDto, CancellationToken cancellationToken);
 
 	}
 }

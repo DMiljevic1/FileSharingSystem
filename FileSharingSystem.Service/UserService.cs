@@ -18,9 +18,9 @@ namespace FileSharingSystem.Service
 		private readonly IUserRepository _userRepository;
 		private readonly IMapper _mapper;
 		private readonly IHashService _hashService;
-		private readonly IValidator<UserDto> _validator;
+		private readonly IValidator<AddUserRequest> _validator;
 		private readonly ILogger<UserService> _logger;
-		public UserService(IUserRepository userRepository, IMapper mapper, IHashService hashService, IValidator<UserDto> validator, ILogger<UserService> logger)
+		public UserService(IUserRepository userRepository, IMapper mapper, IHashService hashService, IValidator<AddUserRequest> validator, ILogger<UserService> logger)
 		{
 			_userRepository = userRepository;
 			_mapper = mapper;
@@ -29,30 +29,31 @@ namespace FileSharingSystem.Service
 			_logger = logger;
 		}
 
-        public async Task<UserDto> GetUserById(int userId, CancellationToken cancellationToken)
+        public async Task<AddUserRequest> GetUserById(int userId, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserById(userId, cancellationToken);
-			return _mapper.Map<User,UserDto>(user);
+			return _mapper.Map<User,AddUserRequest>(user);
         }
 
-		public async Task<AddUserResponse> AddUser(UserDto userDto, CancellationToken cancellationToken)
+		public async Task<AddUserResponse> AddUser(AddUserRequest request, CancellationToken cancellationToken)
 		{
 			var response = new AddUserResponse();
-			var validationResult = await _validator.ValidateAsync(userDto, cancellationToken);
-			if(validationResult.IsValid)
+			request.Password = _hashService.HashUserPassword(request.Password);
+			request.ConfirmPassword = _hashService.HashUserPassword(request.ConfirmPassword);
+			var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+			if (validationResult.IsValid)
 			{
-				userDto.Password = _hashService.HashUserPassword(userDto.Password);
-				var user = _mapper.Map<UserDto, User>(userDto);
+				var user = _mapper.Map<AddUserRequest, User>(request);
 				await _userRepository.AddUser(user, cancellationToken);
 				response.Success = true;
 				response.Message = "User created successfully.";
-				_logger.LogDebug("User created successfully. User email: {0}", user.Email);
+				_logger.LogDebug("Add user: {@request} {@response}", request, response);
 			}
 			else
 			{
 				response.Success = false;
 				response.Message = validationResult.ToString().Replace("\r\n", " ");
-				_logger.LogError("Add user failed. Validation errors: {0}", response.Message);
+				_logger.LogError("Add user failed: {@request} {@response}", request, response);
 			}
 			return response;
 		}

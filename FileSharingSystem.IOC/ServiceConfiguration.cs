@@ -85,7 +85,7 @@ namespace FileSharingSystem.IOC
 
 		private static void ConfigureFluentValidation(IServiceCollection services, IConfiguration configuration)
 		{
-			services.AddScoped<IValidator<UserDto>, UserValidator>();
+			services.AddScoped<IValidator<AddUserRequest>, UserValidator>();
 		}
 	}
 }

@@ -30,40 +30,47 @@ namespace FileSharingSystem.Service
 			_hashService = hashService;
 			_logger = logger;
 		}
-		public async Task<User> Authenticate(UserLogin userLogin, CancellationToken cancellationToken)
+		public async Task<User> Authenticate(LoginRequest request, CancellationToken cancellationToken)
 		{
-			return await _authRepository.GetUserByEmailAndPassword(userLogin.Email, _hashService.HashUserPassword(userLogin.Password), cancellationToken);
+			return await _authRepository.GetUserByEmailAndPassword(request.Email, request.Password, cancellationToken);
 		}
 
-		public async Task<LoginResponse> Generate(UserLogin userLogin, CancellationToken cancellationToken)
+		public async Task<LoginResponse> Generate(LoginRequest request, CancellationToken cancellationToken)
 		{
-			var loginResponse = new LoginResponse();
-			var user = await Authenticate(userLogin, cancellationToken);
+			var response = new LoginResponse();
+			request.Password = _hashService.HashUserPassword(request.Password);
+			var user = await Authenticate(request, cancellationToken);
 			if(user != null)
 			{
-				var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-				var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-				var claims = new[]
-				{
-					new Claim(ClaimTypes.Rsa, user.Id.ToString()),
-					new Claim(ClaimTypes.NameIdentifier, user.Email)
-				};
-				var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Audience"],
-					claims,
-					expires: DateTime.UtcNow.AddMinutes(double.Parse(_config["Jwt:Exp"])),
-					signingCredentials: credentials);
-				loginResponse.Success = true;
-				loginResponse.Message = "User found.";
-				loginResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
-				_logger.LogDebug("Login passed. Message: {0}, Email: {1}, Password: {2}", loginResponse.Message, userLogin.Email, _hashService.HashUserPassword(userLogin.Password));
+				var token = GenerateToken(user);
+				response.Success = true;
+				response.Message = "Login passed successfully.";
+				response.Token = new JwtSecurityTokenHandler().WriteToken(token);
+				_logger.LogDebug("User login: {@request} {@response}", request, response);
 			}
 			else
 			{
-				loginResponse.Success = false;
-				loginResponse.Message = "User not found.";
-				_logger.LogError("Login failed. Message: {0}, Email: {1}, Password: {2}", loginResponse.Message, userLogin.Email, _hashService.HashUserPassword(userLogin.Password));
+				response.Success = false;
+				response.Message = "Login failed.";
+				_logger.LogError("User login failed: {@request} {@response}", request, response);
 			}
-			return loginResponse;
+			return response;
+		}
+
+		private JwtSecurityToken GenerateToken(User user)
+		{
+			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+			var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+			var claims = new[]
+			{
+					new Claim(ClaimTypes.Rsa, user.Id.ToString()),
+					new Claim(ClaimTypes.NameIdentifier, user.Email)
+				};
+			var token = new JwtSecurityToken(_config["Jwt:Issuer"], _config["Jwt:Audience"],
+				claims,
+				expires: DateTime.UtcNow.AddMinutes(double.Parse(_config["Jwt:Exp"])),
+				signingCredentials: credentials);
+			return token;
 		}
 	}
 }
