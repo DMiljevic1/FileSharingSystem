@@ -37,12 +37,11 @@ namespace FileSharingSystem.API.Controllers
 		[EnableCors("AllowLocalhost")]
 		[HttpPost]
 		[AllowAnonymous]
-		public async Task<IActionResult> AddUser([FromBody]UserDto userDto, CancellationToken cancellationToken)
+		public async Task<IActionResult> AddUser([FromBody]AddUserRequest userDto, CancellationToken cancellationToken)
 		{
 			if (userDto != null)
 			{
-				await _userService.AddUser(userDto, cancellationToken);
-				return Ok();
+				return Ok(await _userService.AddUser(userDto, cancellationToken));
 			}
 			return BadRequest();
 		}
