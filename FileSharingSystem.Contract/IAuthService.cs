@@ -10,7 +10,7 @@ namespace FileSharingSystem.Contract
 {
 	public interface IAuthService
 	{
-		Task<User> Authenticate(LoginRequest userLogin, CancellationToken cancellationToken);
+		Task<User?> Authenticate(LoginRequest userLogin, CancellationToken cancellationToken);
 		Task<LoginResponse> Generate(LoginRequest userLogin, CancellationToken cancellationToken);
 	}
 }

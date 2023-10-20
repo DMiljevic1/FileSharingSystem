@@ -30,7 +30,7 @@ namespace FileSharingSystem.Service
 			_hashService = hashService;
 			_logger = logger;
 		}
-		public async Task<User> Authenticate(LoginRequest request, CancellationToken cancellationToken)
+		public async Task<User?> Authenticate(LoginRequest request, CancellationToken cancellationToken)
 		{
 			return await _authRepository.GetUserByEmailAndPassword(request.Email, request.Password, cancellationToken);
 		}

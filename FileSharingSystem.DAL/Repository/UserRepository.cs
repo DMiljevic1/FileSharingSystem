@@ -14,16 +14,9 @@ namespace FileSharingSystem.DAL.Repository
 			_dbContext = dbContext;
 		}
 
-        public async Task<User> GetUserById(int userId, CancellationToken cancellationToken)
+        public async Task<User?> GetUserById(int userId, CancellationToken cancellationToken)
         {
-			try
-			{
-				return await _dbContext.Users.FirstOrDefaultAsync<User>(u => u.Id == userId, cancellationToken);
-			}
-			catch (Exception)
-			{
-				throw;
-			}
+			return await _dbContext.Users.FirstOrDefaultAsync<User>(u => u.Id == userId, cancellationToken);
         }
 
 		public async Task AddUser(User user, CancellationToken cancellationToken)
