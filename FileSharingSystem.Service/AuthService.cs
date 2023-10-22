@@ -30,7 +30,7 @@ namespace FileSharingSystem.Service
 			_hashService = hashService;
 			_logger = logger;
 		}
-		public async Task<User> Authenticate(LoginRequest request, CancellationToken cancellationToken)
+		public async Task<User?> Authenticate(LoginRequest request, CancellationToken cancellationToken)
 		{
 			return await _authRepository.GetUserByEmailAndPassword(request.Email, request.Password, cancellationToken);
 		}
@@ -44,7 +44,7 @@ namespace FileSharingSystem.Service
 			{
 				var token = GenerateToken(user);
 				response.Success = true;
-				response.Message = "Login passed successfully.";
+				response.Message = "Login was successfull.";
 				response.Token = new JwtSecurityTokenHandler().WriteToken(token);
 				_logger.LogDebug("User login: {@request} {@response}", request, response);
 			}

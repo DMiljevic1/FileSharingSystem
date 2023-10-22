@@ -17,16 +17,9 @@ namespace FileSharingSystem.DAL.Repository
 		{
 			_dbContext = dbContext;
 		}
-		public async Task<User> GetUserByEmailAndPassword(string email, string password, CancellationToken cancellationToken)
+		public async Task<User?> GetUserByEmailAndPassword(string email, string password, CancellationToken cancellationToken)
 		{
-			try
-			{
-				return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password, cancellationToken);
-			}
-			catch (Exception e)
-			{
-				throw;
-			}
+			return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == password, cancellationToken);
 		}
 	}
 }

@@ -14,6 +14,7 @@ namespace FileSharingSystem.Service.Mapping
 		public UserProfile()
 		{
 			CreateMap<User, AddUserRequest>().ReverseMap();
+			CreateMap<User, GetUserResponse>().ReverseMap();
 		}
 	}
 }

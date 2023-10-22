@@ -20,28 +20,23 @@ namespace FileSharingSystem.API.Controllers
 			_userService = userService;
 		}
 		[EnableCors("AllowLocalhost")]
-        [HttpGet]
+        [HttpGet("userId:int")]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetUserById(int userId, CancellationToken cancellationToken) 
 		{
 			var user = await _userService.GetUserById(userId, cancellationToken);
-			
 
-			if (user != null) 
-			{
-				return Ok(user);
-			}
-			return BadRequest();
+			return Ok(user);
 		}
 
 		[EnableCors("AllowLocalhost")]
 		[HttpPost]
 		[AllowAnonymous]
-		public async Task<IActionResult> AddUser([FromBody]AddUserRequest userDto, CancellationToken cancellationToken)
+		public async Task<IActionResult> AddUser([FromBody]AddUserRequest request, CancellationToken cancellationToken)
 		{
-			if (userDto != null)
+			if (request != null)
 			{
-				return Ok(await _userService.AddUser(userDto, cancellationToken));
+				return Ok(await _userService.AddUser(request, cancellationToken));
 			}
 			return BadRequest();
 		}

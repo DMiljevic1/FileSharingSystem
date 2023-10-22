@@ -29,10 +29,24 @@ namespace FileSharingSystem.Service
 			_logger = logger;
 		}
 
-        public async Task<AddUserRequest> GetUserById(int userId, CancellationToken cancellationToken)
+        public async Task<GetUserResponse> GetUserById(int userId, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserById(userId, cancellationToken);
-			return _mapper.Map<User,AddUserRequest>(user);
+			var response = new GetUserResponse();
+			if(user != null)
+			{
+				response = _mapper.Map<User, GetUserResponse>(user);
+				response.Success = true;
+				response.Message = "User found.";
+				_logger.LogDebug("Get user from database: {@response}", response);
+			}
+			else
+			{
+				response.Success= false;
+				response.Message = "User not found.";
+				_logger.LogError("Get user from database failed: userId in request: {@userId}, {@response}", userId, response);
+			}
+			return response;
         }
 
 		public async Task<AddUserResponse> AddUser(AddUserRequest request, CancellationToken cancellationToken)

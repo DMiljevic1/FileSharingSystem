@@ -23,11 +23,12 @@ namespace FileSharingSystem.API.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest userLogin, CancellationToken cancellationToken)
 		{
-			var loginResponse = await _authService.Generate(userLogin, cancellationToken);
-			if (loginResponse.Success)
-				return Ok(loginResponse);
-			else
+			if(userLogin == null)
+			{
 				return BadRequest();
+			}
+			var loginResponse = await _authService.Generate(userLogin, cancellationToken);
+			return Ok(loginResponse);
 		}
 	}
 }
