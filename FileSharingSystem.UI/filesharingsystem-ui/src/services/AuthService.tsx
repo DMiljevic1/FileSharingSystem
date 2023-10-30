@@ -11,7 +11,10 @@ export default async function Login(email:FormDataEntryValue | null, password: F
   {
     headers: {'Content-Type': 'application/json'}
   });
-  localStorage.setItem('token', response.data.token);
+  if(response.data.success)
+  {
+    localStorage.setItem('token', response.data.token);
+  }
   } catch (error) {
     console.log(error);
   }
