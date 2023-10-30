@@ -1,4 +1,5 @@
-﻿using FileSharingSystem.Contract;
+﻿using FileSharingSystem.API.Common;
+using FileSharingSystem.Contract;
 using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +11,7 @@ namespace FileSharingSystem.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	public class AuthController : ControllerBase
+	public class AuthController : BaseApiController
 	{
 		private readonly IAuthService _authService;
 		public AuthController (IAuthService authService)
@@ -18,7 +19,6 @@ namespace FileSharingSystem.API.Controllers
 			_authService = authService;
 		}
 
-        [EnableCors("AllowLocalhost")]
         [HttpPost]
 		[AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest userLogin, CancellationToken cancellationToken)

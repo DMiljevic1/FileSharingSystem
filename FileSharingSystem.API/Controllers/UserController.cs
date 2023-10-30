@@ -1,4 +1,5 @@
-﻿using FileSharingSystem.Contract;
+﻿using FileSharingSystem.API.Common;
+using FileSharingSystem.Contract;
 using FileSharingSystem.DTO;
 using FileSharingSystem.Model.Models;
 using FileSharingSystem.Service;
@@ -12,14 +13,14 @@ namespace FileSharingSystem.API.Controllers
 	
 	[Route("api/[controller]")]
 	[ApiController]
-	public class UserController : ControllerBase
+	public class UserController : BaseApiController
 	{
 		private readonly IUserService _userService;
 		public UserController(IUserService userService)
 		{
 			_userService = userService;
 		}
-		[EnableCors("AllowLocalhost")]
+
         [HttpGet("userId:int")]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetUserById(int userId, CancellationToken cancellationToken) 
@@ -29,7 +30,6 @@ namespace FileSharingSystem.API.Controllers
 			return Ok(user);
 		}
 
-		[EnableCors("AllowLocalhost")]
 		[HttpPost]
 		[AllowAnonymous]
 		public async Task<IActionResult> AddUser([FromBody]AddUserRequest request, CancellationToken cancellationToken)
