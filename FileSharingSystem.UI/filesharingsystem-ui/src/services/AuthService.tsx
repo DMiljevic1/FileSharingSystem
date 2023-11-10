@@ -1,7 +1,7 @@
 import axios from 'axios';
  
-export default async function Login(email:FormDataEntryValue | null, password: FormDataEntryValue | null) {
-    
+export default async function Login(email:FormDataEntryValue | null, password: FormDataEntryValue | null) : Promise<Boolean>{
+    let loginResult = false;
   try {
     const response = await axios.post('https://localhost:7177/api/Auth', JSON.stringify(
     {
@@ -11,11 +11,13 @@ export default async function Login(email:FormDataEntryValue | null, password: F
   {
     headers: {'Content-Type': 'application/json'}
   });
-  if(response.data.success)
+  if(await response.data.success)
   {
     localStorage.setItem('token', response.data.token);
+    loginResult = true;
   }
   } catch (error) {
     console.log(error);
   }
+  return await loginResult.valueOf();
 }
